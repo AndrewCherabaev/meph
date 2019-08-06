@@ -1,0 +1,15 @@
+{
+    "description": "Framework written by bad-trip",
+    "name": "andrew/meph",
+    "authors": [
+        {
+            "name": "Andrew Cherabaev",
+            "email": "a.cherabaev@mediasoft.team"
+        }
+    ],
+    "homepage": "https://github.com/AndrewCherabaev/meph",
+    "require": {
+        "php": "^7.1",
+        "ext-pdo": "*"
+    }
+}
