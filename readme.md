@@ -1,27 +1,28 @@
-```composer.json
+```json
 {
-    "minimum-stability": "alpha",
+    "minimum-stability": "dev",
     "authors": [
         {
             "name": "Andrew Cherabaev",
             "email": "a.cherabaev@mediasoft.team"
         }
     ],
-    "require": {
-        "freimvork/freimvork": "*"
-    },
     "repositories": [
         {
             "type": "package",
-            "package": {
-                "name": "freimvork/freimvork",
-                "version": "0.0.1-alpha",
-                "dist": {
-                    "url": "https://github.com/AndrewCherabaev/freimvork/archive/v0.0.1-alpha.zip",
-                    "type": "zip"
+            "package":{
+                "name": "meph/meph",
+                "version": "master",
+                "source": {
+                    "type": "git",
+                    "url": "https://github.com/AndrewCherabaev/meph.git",
+                    "reference": "master"
                 }
             }
         }
-    ]
+    ],
+    "require": {
+        "meph/meph": "master"
+    }
 }
 ```

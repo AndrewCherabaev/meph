@@ -1,3 +1,2 @@
-<?php 
-    view('header.php',[]);
+<?php
     phpinfo();

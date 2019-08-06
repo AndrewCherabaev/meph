@@ -9,7 +9,6 @@
     ],
     "homepage": "https://github.com/AndrewCherabaev/meph",
     "require": {
-        "php": "^7.1",
-        "ext-pdo": "*"
+        "php": "^7.1"
     }
 }

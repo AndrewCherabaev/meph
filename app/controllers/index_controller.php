@@ -10,7 +10,7 @@ return [
              * The same behavior:
              */
             return [
-                'index.php', []
+                'index.php'
             ];
         },
 
@@ -18,8 +18,16 @@ return [
             return [
                 'json', 
                 [ // data to json_encode. always array
-                    ['key' => 'value', 'array' => [1,2,3]], //value
-                    JSON_PRETTY_PRINT | JSON_FORCE_OBJECT // options
+                    'content' => [
+                        "name" => "meph/meph",
+                        "version"=> "master",
+                        "source" => [
+                            "git",
+                            "https://github.com/AndrewCherabaev/meph.git",
+                            "master"
+                        ]
+                    ],
+                    'json_options' => JSON_PRETTY_PRINT | JSON_FORCE_OBJECT
                 ]
             ];
         }

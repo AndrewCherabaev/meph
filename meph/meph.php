@@ -26,10 +26,9 @@ return new class
         }
 
         @[$source, $data] = call_user_func_array($method, []);
-        $data = $data ?? [];
 
         if (is_callable($source)) {
-            return $source(...$data);
+            return call_user_func_array($source, $data ?? []);
         }
 
         return view($source, $data);
