@@ -2,17 +2,17 @@
 
 function array_helper() {
     return new class {
-        public static function filter()
+        static function filter()
         {
             return array_filter(...func_get_args());
         }
 
-        public static function array()
+        static function array()
         {
             return func_get_args();
         }
 
-        public static function get(array $input, array $filter)
+        static function get(array $input, array $filter)
         {
             $output = $input;
             foreach ($filter as $key => $value) {
