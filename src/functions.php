@@ -26,7 +26,16 @@ function send_status($status_code)
 function view($view_path, array $data)
 {
     ob_start();
-    extract($data);
+    $self = new class($data){
+        public function __construct($data){
+            $this->context=(object)$data;
+            try {
+                throw new Exception();
+            } catch(Throwable $e) {
+                $this->trace=array_map(function($_){extract($_);return compact('file', 'line', 'function', 'args');},$e->getTrace());
+            }
+        }
+    };
     include VIEWS . $view_path;
     echo ob_get_clean();
 }

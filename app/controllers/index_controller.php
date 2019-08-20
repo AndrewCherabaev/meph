@@ -1,7 +1,7 @@
 <?php
 
 return [
-    "index_controller" => (object)[
+    "index_controller" => [
         "index_action" => function(): array {
             return [
                 'view', ['index.php', []]

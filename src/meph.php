@@ -15,7 +15,7 @@ return new class
 
         $route = $this->route();
         [$controller_name, $action_name] = explode('.', $route[static::$method]['action']);
-        $controller = (require CONTROLLERS . $controller_name . '_controller.php')[$controller_name . '_controller'];
+        $controller = (object)(require CONTROLLERS . $controller_name . '_controller.php')[$controller_name . '_controller'];
         $method = $controller->{$action_name . '_action'}->bindTo($controller);
 
         $returnType = (new ReflectionFunction($method))->getReturnType();
@@ -32,7 +32,6 @@ return new class
         }
 
         return view($source, $data);
-
     }
 
     function route()

@@ -4,13 +4,15 @@
 
 ```
 app kernel
+> session
 > router
 > routes list
-> get DI binding params
+> get binding params
 > get controller
 > bind dependencies/extencions/uses
-> bind action to ctrl object
-> DI to current action and execute
+> bind action to controller
+> bind params to current action and execute
+    get connection/service/etc
 > wrap returned data
     callable ? call : render view
 > return data
