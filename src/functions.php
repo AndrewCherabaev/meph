@@ -3,6 +3,7 @@
 include __DIR__ . "/helpers/array_helper.php";
 include __DIR__ . "/helpers/html_helper.php";
 include __DIR__ . "/helpers/form_helper.php";
+include __DIR__ . "/view/view_render.php";
 
 function error_handler($errno, $errstr, $errfile, $errline, $errcontext)
 {
@@ -25,17 +26,18 @@ function send_status($status_code)
 }
 function view($view_path, array $data)
 {
+    view_render($view_path);
     ob_start();
     $self = new class($data){
         public function __construct($data){
             $this->context=(object)$data;
             try {
                 throw new Exception();
-            } catch(Throwable $e) {
+            } catch(Exception $e) {
                 $this->trace=array_map(function($_){extract($_);return compact('file', 'line', 'function', 'args');},$e->getTrace());
             }
         }
     };
-    include VIEWS . $view_path;
+    include VIEWS_CACHE . $view_path;
     echo ob_get_clean();
 }
