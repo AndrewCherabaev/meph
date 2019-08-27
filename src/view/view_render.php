@@ -3,10 +3,18 @@
 function view_render($view_path) {
 
     $renders = require 'renders.php';
+    
+    $parts = explode('/', $view_path);
+    $file = array_pop($parts);
+    $dir = VIEWS_CACHE;
+    foreach($parts as $part) if(!is_dir($dir .= "$part/")) mkdir($dir);
+    $dir .= "$file";
 
     $template = file_get_contents(VIEWS . $view_path);
 
     $matches = [];
+    // perlace php open/close tags with htmlentities
+    $template = str_replace(['<?', '?>'], ['&lt;&quest;','&quest;&gt;'], $template);
     // rm comments
     $template = preg_replace('/\#\-.+\-\#/', '', $template);
     // operators
@@ -18,5 +26,5 @@ function view_render($view_path) {
     }
 
     // replace "#" with "<?"
-    file_put_contents(VIEWS_CACHE . $view_path, preg_replace(['/\#\:\:/', '/\#\:/', '/\:\#/'], ['<?php echo', '<?php ', ' ?>'], $template . "\n"));
+    file_put_contents($dir, str_replace(['#::', '#:', ':#'], ['<?php echo ', '<?php ', ' ?>'], $template . "\n"));
 }
